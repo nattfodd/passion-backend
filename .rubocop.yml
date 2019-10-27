@@ -1,0 +1,50 @@
+AllCops:
+  TargetRubyVersion: 2.5
+
+  Exclude:
+    - db/schema.rb
+    - db/migrate/*.rb
+    - logs
+    - docs/**/*.rb
+    - bin/bundle
+    - node_modules/**/*
+
+Style/FormatStringToken:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+
+Style/MixinUsage:
+  Enabled: true
+  Exclude:
+  - "bin/*"
+
+Style/Documentation:
+  Enabled: false
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - "spec/**/*"
+
+Metrics/ClassLength:
+  Exclude:
+    - db/seeds/*.rb
+
+Metrics/MethodLength:
+  Exclude:
+    - db/seeds/*.rb
+
+Metrics/BlockLength:
+  ExcludedMethods:
+    - describe
+    - context
+    - configure
+    - factory
+    - define
+    - namespace
+    - task
+    - shared_examples
+
+Style/ClassAndModuleChildren:
+  Enabled: false
