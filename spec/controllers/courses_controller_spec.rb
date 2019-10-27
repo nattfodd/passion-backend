@@ -3,6 +3,10 @@
 RSpec.describe CoursesController, type: :controller do
   let(:json_response) { JSON.parse(response.body) }
 
+  before do
+    allow(controller).to receive(:doorkeeper_token) { double(acceptable?: true) }
+  end
+
   describe '#index' do
     let!(:courses) { FactoryBot.create_list(:course, 3) }
 

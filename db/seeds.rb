@@ -141,3 +141,5 @@
     "state": 'active'
   }
 ].each { |course| Course.create!(course) }
+
+User.create!(email: 'test@example.com', password: 'Qwerty123')
