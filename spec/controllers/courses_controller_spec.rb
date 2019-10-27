@@ -15,6 +15,15 @@ RSpec.describe CoursesController, type: :controller do
       get :index
       expect(json_response).to eq(courses.as_json)
     end
+
+    context 'when category_id param is present' do
+      let(:desired_course) { courses.first }
+
+      it 'returns only categories for the given vertical' do
+        get :index, params: { category_id: desired_course.category_id }
+        expect(json_response).to eq([desired_course.as_json])
+      end
+    end
   end
 
   describe '#create' do

@@ -2,7 +2,7 @@
 
 class CoursesController < ApplicationController
   def index
-    render json: Course.all
+    render json: courses
   end
 
   def create
@@ -24,6 +24,16 @@ class CoursesController < ApplicationController
   end
 
   private
+
+  def courses
+    relation = Course.all
+    relation = relation.where(category_id: category_id) if category_id
+    relation
+  end
+
+  def category_id
+    params[:category_id]
+  end
 
   def course
     @course ||= Course.find(params.require(:id))

@@ -15,6 +15,15 @@ RSpec.describe CategoriesController, type: :controller do
       get :index
       expect(json_response).to eq(categories.as_json)
     end
+
+    context 'when vertical_id param is present' do
+      let(:desired_category) { categories.first }
+
+      it 'returns only categories for the given vertical' do
+        get :index, params: { vertical_id: desired_category.vertical_id }
+        expect(json_response).to eq([desired_category.as_json])
+      end
+    end
   end
 
   describe '#create' do

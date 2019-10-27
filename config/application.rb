@@ -37,5 +37,12 @@ module PassionBackend
     config.api_only = true
 
     config.eager_load_paths += [Rails.root.join('app', 'services')]
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins 'localhost:3001'
+        resource '*', headers: :any, methods: %i[get post update destroy options]
+      end
+    end
   end
 end

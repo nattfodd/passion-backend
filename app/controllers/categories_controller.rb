@@ -2,7 +2,7 @@
 
 class CategoriesController < ApplicationController
   def index
-    render json: Category.all
+    render json: categories
   end
 
   def create
@@ -24,6 +24,16 @@ class CategoriesController < ApplicationController
   end
 
   private
+
+  def categories
+    relation = Category.all
+    relation = relation.where(vertical_id: vertical_id) if vertical_id
+    relation
+  end
+
+  def vertical_id
+    params[:vertical_id]
+  end
 
   def category
     @category ||= Category.find(params.require(:id))
