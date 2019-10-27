@@ -3,6 +3,7 @@ class CreateCourses < ActiveRecord::Migration[5.2]
     create_table :courses do |t|
       t.string :name
       t.string :author
+      t.string :state
       t.integer :category_id
       t.timestamps
     end
