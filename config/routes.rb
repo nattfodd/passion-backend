@@ -1,3 +1,14 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  devise_for :users
+
+  use_doorkeeper do
+    skip_controllers :authorizations, :applications,
+                     :authorized_applications
+  end
+
+  resources :categories
+  resources :courses
+  resources :verticals
 end
